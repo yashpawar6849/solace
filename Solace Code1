@@ -1,0 +1,33 @@
+class SolaceAssessment:
+    def __init__(self):
+        self.questions = [
+            "Do you often feel overwhelmed?",
+            "Have you experienced changes in your sleep patterns?",
+            # Add more questions based on the context of mental health assessment
+        ]
+        self.answers = []
+
+    def conduct_assessment(self):
+        print("Welcome to Solace Self-Assessment:")
+        for question in self.questions:
+            answer = input(f"{question} (yes/no): ").lower()
+            if answer == 'yes' or answer == 'no':
+                self.answers.append(answer)
+            else:
+                print("Invalid input. Please answer with 'yes' or 'no'.")
+                return
+
+    def generate_report(self):
+        print("\nSolace Assessment Report:")
+        for i, question in enumerate(self.questions):
+            print(f"{i + 1}. {question} - Answer: {self.answers[i]}")
+
+    def run_solace(self):
+        self.conduct_assessment()
+        self.generate_report()
+
+
+# Example Usage
+if __name__ == "__main__":
+    solace_assessment = SolaceAssessment()
+    solace_assessment.run_solace()
