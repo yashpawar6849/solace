@@ -1,0 +1,68 @@
+class SolaceAssessment:
+    def __init__(self):
+        self.questions = [
+            "Do you often feel overwhelmed?",
+            "Have you experienced changes in your sleep patterns?",
+            # Add more questions based on the context of mental health assessment
+        ]
+        self.answers = []
+        self.resources = {
+            'books': {
+                'high_score': ["Book 1 - Managing Stress", "Book 2 - The Power of Sleep"],
+                'low_score': ["Book 3 - Building Resilience", "Book 4 - Mindfulness for Beginners"]
+            },
+            'videos': {
+                'high_score': ["Video 1 - Understanding Anxiety", "Video 2 - Importance of Mindfulness"],
+                'low_score': ["Video 3 - Stress Management Techniques", "Video 4 - Healthy Sleep Habits"]
+            }
+        }
+
+    def conduct_assessment(self):
+        print("Welcome to Solace Self-Assessment:")
+        for question in self.questions:
+            answer = input(f"{question} (yes/no): ").lower()
+            if answer == 'yes' or answer == 'no':
+                self.answers.append(answer)
+            else:
+                print("Invalid input. Please answer with 'yes' or 'no'.")
+                return
+
+    def calculate_score(self):
+        score = sum(1 for answer in self.answers if answer == 'yes')
+        return score
+
+    def generate_report(self):
+        print("\nSolace Assessment Report:")
+        for i, question in enumerate(self.questions):
+            print(f"{i + 1}. {question} - Answer: {self.answers[i]}")
+
+        score = self.calculate_score()
+        print(f"\nYour Solace Score: {score}")
+
+        if score >= len(self.questions) / 2:
+            print("Based on your responses, consider seeking professional help or talking to someone you trust.")
+            self.display_resources(score)
+        else:
+            print("Your responses suggest a lower likelihood of significant mental health concerns. Continue to monitor your well-being.")
+
+    def display_resources(self, score):
+        print("\nEducational Resources:")
+        print("Books:")
+        for book in self.resources['books']['high_score'] if score >= len(self.questions) / 2 else self.resources['books']['low_score']:
+            print(f"- {book}")
+        print("\nVideos:")
+        for video in self.resources['videos']['high_score'] if score >= len(self.questions) / 2 else self.resources['videos']['low_score']:
+            print(f"- {video}")
+
+        if score >= len(self.questions) / 2:
+            print("\nConsider reaching out to a mental health professional or counselor for personalized support.")
+
+    def run_solace(self):
+        self.conduct_assessment()
+        self.generate_report()
+
+
+# Example Usage
+if __name__ == "__main__":
+    solace_assessment = SolaceAssessment()
+    solace_assessment.run_solace()
