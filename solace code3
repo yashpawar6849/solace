@@ -1,0 +1,29 @@
+def ask_question(question):
+    response = input(question + " ")
+    return response
+
+questions = [
+    "How would you describe your overall experience with Solace?",
+    "Were you able to navigate through the platform easily?",
+    "Did you find the interactive modules and quizzes engaging and informative?",
+    "Did you feel the self-assessment tools accurately reflected your mental health status?",
+    "Were the personalized recommendations helpful to you?",
+    "Did you find the severity assessments and recommendations provided by Solace aligning with your expectations?",
+    "Were the video and article recommendations informative and relevant to your needs?",
+    "How would you rate the educational content in terms of clarity and usefulness?",
+    "Did you feel that Solace provided personalized insights and recommendations tailored to your needs?",
+    "Were you aware of the platform's use of big data and machine learning to enhance recommendations and insights?",
+    "Have you noticed any positive changes in your mental well-being since using Solace?",
+    "On a scale of 1 to 10, how likely are you to recommend Solace to a friend or colleague?"
+]
+
+responses = {}
+
+for question in questions:
+    user_response = ask_question(question)
+    responses[question] = user_response
+
+# Print collected responses
+print("\nCollected Responses:")
+for question, response in responses.items():
+    print(f"{question}\nResponse: {response}\n")
